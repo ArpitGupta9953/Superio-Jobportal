@@ -3,7 +3,7 @@ import moment from "moment";
 import axios from "axios";
 import { AppContext } from "../context/AppContext";
 import Loader from "../components/Loader";
-import { toast } from "react-hot-toast"; // ✅ Make sure toast is imported
+import { toast } from "react-hot-toast"; // 
 
 const ManageJobs = () => {
   const [manageJobData, setManageJobData] = useState(null);

@@ -14,11 +14,11 @@ const RecruiterLogin = () => {
 
   const { backendUrl, setCompanyData, setCompanyToken } =
     useContext(AppContext);
-  const navigate = useNavigate(); // ✅ Added useNavigate
+  const navigate = useNavigate(); // 
 
   const recruiterLogin = async (e) => {
     e.preventDefault();
-    setLoading(true); // ✅ Fixed loading state
+    setLoading(true); // 
 
     try {
       const { data } = await axios.post(`${backendUrl}/company/login-company`, {

@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ Added this
+  const location = useLocation(); // 
 
   const { companyData, companyLoading } = useContext(AppContext);
 
