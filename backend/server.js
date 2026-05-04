@@ -45,25 +45,15 @@ const app = express();
 app.use(express.json()); // bodyParser ki jagah yeh use kar
 
 // ✅ CORS FIX (LOCAL + PRODUCTION DONO)
-const allowedOrigins = [
-  "http://localhost:5173",   // Vite local
-  "http://localhost:3000",   // CRA local (agar use ho)
-  "https://superio-jobportal.vercel.app"
-];
-
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // Postman / direct call
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error("CORS blocked: " + origin));
-    }
+    if (!origin) return callback(null, true);
+    if (origin.includes("localhost")) return callback(null, true);
+    if (origin.endsWith(".vercel.app")) return callback(null, true);
+    return callback(new Error("CORS blocked: " + origin));
   },
   credentials: true
 }));
-
 
 // ✅ DB + CLOUDINARY
 connectDB();
