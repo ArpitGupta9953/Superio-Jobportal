@@ -6,8 +6,10 @@ export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-  
+//kk
+  axios.defaults.baseURL = backendUrl;
+axios.defaults.withCredentials = true;
+///
 
   const [searchFilter, setSearchFilter] = useState({ title: "", location: "" });
   const [isSearched, setIsSearched] = useState(false);
@@ -128,12 +130,20 @@ export const AppContextProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("userToken")) {
-      fetchUserApplication();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("userToken")) {
+  //     fetchUserApplication();
+  //   }
+  // }, []);
 
+  //kk
+  useEffect(() => {
+  if (userToken) {
+    fetchUserApplication();
+  }
+}, [userToken]);  
+
+///kk
   useEffect(() => {
     fetchJobsData();
   }, []);
